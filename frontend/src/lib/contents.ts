@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { ContentSchema } from "./validations/contentSchema";
+import { redirect } from "next/navigation";
 
 export type AddContentType = {
     state: 'idle' | 'success' | 'error';
@@ -52,11 +53,13 @@ export async function AddContent(
 
         const newContent = await res.json();
 
-        return {
-            state: 'success',
-            content: {title: newContent.title, body: newContent.body},
-        };
+        revalidatePath('/');
+        redirect(`/page/${newContent.id}`);
     } catch (error: unknown) {
+        // Next.jsのリダイレクト例外は再throwする
+        if (error instanceof Error && error.message === 'NEXT_REDIRECT') {
+            throw error;
+        }
         console.error('不明なエラーが発生しました:', error);
         return {
             state: 'error',
@@ -154,11 +157,13 @@ export async function UpdateContent(
 
     const updatedContent = await res.json();
 
-    return {
-        state: 'success',
-        content: {title: updatedContent.title, body: updatedContent.body},
-    };
+    revalidatePath('/');
+    redirect(`/page/${updatedContent.id}`);
   } catch (error: unknown) {
+    // Next.jsのリダイレクト例外は再throwする
+    if (error instanceof Error && error.message === 'NEXT_REDIRECT') {
+        throw error;
+    }
     console.error('不明なエラーが発生しました:', error);
     return {
         state: 'error',
