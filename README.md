@@ -86,7 +86,7 @@ npm run test
 
 ### コード品質
 - **TypeScript**: 型安全性を確保
-- **テストカバレッジ**: 主要コンポーネントのユニットテストを実装
+- **ユニットテスト**: MainForm コンポーネントの基本機能・条件分岐を網羅したテストを実装（Vitest + Testing Library）
 - **ESLint**: Next.js推奨設定でコード品質を維持
 
 ## 🎨 UI/UX の工夫
