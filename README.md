@@ -52,7 +52,7 @@ npm install
 npm run start:dev
 ```
 
-APIは `http://localhost:3001` で起動します。
+APIは `http://localhost:3000` で起動します。
 
 ### 2. フロントエンドの起動
 
@@ -78,6 +78,7 @@ npm run test
 - **Server Actions**: フォーム送信にServer Actionsを活用し、クライアントサイドのJavaScriptを最小化
   - 保存成功時は`redirect()`で自動リダイレクト
   - リダイレクト例外はcatchで検知して再throwし、Next.jsが処理
+- **削除処理**: ページ削除はクライアント側の`fetch`でAPIを呼び出し、完了後に一覧を更新
 - **コンポーネント分割**: 再利用可能な粒度でコンポーネントを設計（`Sidebar`, `SidebarItem`, `Main`, `Icons`, `MobileNav`）
 
 ### バリデーション戦略

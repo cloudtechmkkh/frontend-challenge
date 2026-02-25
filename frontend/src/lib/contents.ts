@@ -101,23 +101,21 @@ export async function GetContentById(id: number) {
     }
 }
 
-export async function DeleteContent(id: number) {
-    try {
-         const res = await fetch(`http://localhost:3000/content/${id}`, {
-            method: 'DELETE',
-        });
-        if (!res.ok) {
-            throw new Error('コンテンツの削除に失敗しました');
-        }
+// export async function DeleteContent(id: number) {
+//     try {
+//          const res = await fetch(`http://localhost:3000/content/${id}`, {
+//             method: 'DELETE',
+//         });
+//         if (!res.ok) {
+//             throw new Error('コンテンツの削除に失敗しました');
+//         }
 
-        revalidatePath('/page/remove-content')
-
-        return null;
-    } catch (error) {
-        console.error('不明なエラーが発生しました:', error);
-        return null;
-    }
-}
+//         return null;
+//     } catch (error) {
+//         console.error('不明なエラーが発生しました:', error);
+//         return null;
+//     }
+// }
 
 export async function UpdateContent(
  prevState: AddContentType,

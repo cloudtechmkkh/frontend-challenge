@@ -1,6 +1,9 @@
+export const dynamic = "force-dynamic";
+
 import MainForm from "@/components/Main";
 import MobileNav from "@/components/mobile-nav";
 import Sidebar from "@/components/Sidebar";
+import { AddContent } from "@/lib/contents";
 
 export default function MainPage() {
 
@@ -11,7 +14,7 @@ export default function MainPage() {
       </aside>
       <div className="bg-[#F5F8FA] rounded-2xl mt-4">
         <MobileNav showDoubleButton={false} showDeleteButton={false} />
-        <MainForm showEditButton={false} />
+        <MainForm showEditButton={false} action={AddContent} />
       </div>
     </div>
   )

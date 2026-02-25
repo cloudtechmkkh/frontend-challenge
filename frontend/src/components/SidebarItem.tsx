@@ -1,6 +1,6 @@
 'use client';
 
-import { DeleteContent } from "@/lib/contents";
+// import { DeleteContent } from "@/lib/contents";
 import { DeleteButton } from "./Icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,8 +18,22 @@ export function SidebarItem({ id, title, showDeleteButton = true, showEditButton
 
   const handleDelete = async (id: number) => {
     if (confirm('本当に削除しますか？')) {
-      await DeleteContent(id);
-      window.location.reload();
+      try {
+         const res = await fetch(`http://localhost:3000/content/${id}`, {
+            method: 'DELETE',
+        });
+        if (!res.ok) {
+            throw new Error('コンテンツの削除に失敗しました');
+        }
+
+         window.location.reload();
+
+        return null;
+    } catch (error) {
+        console.error('不明なエラーが発生しました:', error);
+        return null;
+    }
+      // await DeleteContent(id);
     }
   };
 

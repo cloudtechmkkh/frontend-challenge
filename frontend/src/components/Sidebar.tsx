@@ -28,7 +28,7 @@ type SidebarProps = {
     </div>
     <div className="mt-8">
       {contents.map((content: ContentType) => {
-        return <SidebarItem key={content.id} id={content.id} title={content.title} showDeleteButton={showDeleteButton} showEditButton={showEditButton} />
+        return <SidebarItem key={content.id} id={content.id} title={content.title} showDeleteButton={showDeleteButton} />
       })}
       </div>
     { showDoubleButton &&

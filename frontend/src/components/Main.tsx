@@ -1,7 +1,6 @@
-
 'use client'
 
-import { AddContent, AddContentType } from "@/lib/contents"
+import { AddContentType } from "@/lib/contents"
 import { CancelButton, EditButton, SaveButton } from "./Icons"
 import { useActionState, useRef } from "react"
 
@@ -28,9 +27,9 @@ type MainFormProps = {
   action?: (prevState: AddContentType, formData: FormData) => Promise<AddContentType>;
 }
 
-export default function MainForm({content, showCancelButton = true, showSaveButton = true, showEditButton = true, id, action = AddContent}: MainFormProps) {
+export default function MainForm({content, showCancelButton = true, showSaveButton = true, showEditButton = true, id, action}: MainFormProps) {
 
-  const [state, formAction] = useActionState(action, InitialState(content))
+  const [state, formAction] = useActionState(action!, InitialState(content))
   const formRef = useRef<HTMLFormElement>(null)
   const errorObject = state.state === 'error' && typeof state.error != 'string' ? state.error : undefined
 
