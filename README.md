@@ -78,7 +78,7 @@ npm run test
 - **Server Actions**: フォーム送信にServer Actionsを活用し、クライアントサイドのJavaScriptを最小化
   - 保存成功時は`redirect()`で自動リダイレクト
   - リダイレクト例外はcatchで検知して再throwし、Next.jsが処理
-- **削除処理**: ページ削除はクライアント側の`fetch`でAPIを呼び出し、完了後に一覧を更新
+- **削除処理**: ページ削除はクライアント側の`fetch`でAPIを呼び出し、完了後にトップページにリダイレクト
 - **コンポーネント分割**: 再利用可能な粒度でコンポーネントを設計（`Sidebar`, `SidebarItem`, `Main`, `Icons`, `MobileNav`）
 
 ### バリデーション戦略

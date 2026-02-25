@@ -9,10 +9,9 @@ type SidebarItemProps = {
   id: number;
   title: string;
   showDeleteButton?: boolean;
-  showEditButton?: boolean;
 }
 
-export function SidebarItem({ id, title, showDeleteButton = true, showEditButton = true }: SidebarItemProps) {
+export function SidebarItem({ id, title, showDeleteButton = true }: SidebarItemProps) {
 
   const pathname = usePathname();
 
@@ -26,7 +25,7 @@ export function SidebarItem({ id, title, showDeleteButton = true, showEditButton
             throw new Error('コンテンツの削除に失敗しました');
         }
 
-         window.location.reload();
+         window.location.href = '/';
 
         return null;
     } catch (error) {
